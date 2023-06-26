@@ -1,10 +1,8 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
-import $ from 'jquery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCog} from '@fortawesome/free-solid-svg-icons';
+import { faUser, faCog} from '@fortawesome/free-solid-svg-icons';
 import Slider from 'react-slick';
-import { faUser} from '@fortawesome/free-solid-svg-icons';
 import article1 from './images/article1.jpg';
 import article2 from './images/article2.jpg';
 import article3 from './images/article3.jpg';
@@ -28,21 +26,18 @@ import productrow23 from './images/productrow23.jpg';
 import icon1 from './images/icon1.jpg';
 import icon2 from './images/icon2.jpg';
 import icon3 from './images/icon3.jpg';
-import percentage from './images/percentage.jpg';
 
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <Carousel />
+      <ImageSlider />
       <TextSection />
       <ProductSection />
-      <GridComponent/>
       <AdditionalService/>
       <Portfolio/>
-      <ItemsImages/>
-      <ImageBox/>
+      <ProductCard/>
       <Card/>
       <ProgressCircles/>
       <SponsorLogosSlider/>
@@ -86,34 +81,28 @@ function Navbar() {
   );
 }
 
-function Carousel() {
+const ImageSlider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleDotClick = (index) => {
     setActiveIndex(index);
   };
 
-  const images = [homebg1, homebg2, homebg3];
-
   return (
-    <div className="carousel">
-      <div className="slide-container" style={{ transform: `translateX(-${activeIndex * 100}%)` }}>
-        {images.map((image, index) => (
-          <img key={index} src={image} alt={`Image ${index + 1}`} />
-        ))}
+    <div className="slider">
+      <div className="slider-images">
+        <img src={homebg1} alt="Image 1" className={activeIndex === 0 ? 'active' : ''} />
+        <img src={homebg2} alt="Image 2" className={activeIndex === 1 ? 'active' : ''} />
+        <img src={homebg3} alt="Image 3" className={activeIndex === 2 ? 'active' : ''} />
       </div>
-      <div className="dots">
-        {images.map((_, index) => (
-          <span
-            key={index}
-            className={activeIndex === index ? 'active' : ''}
-            onClick={() => handleDotClick(index)}
-          ></span>
-        ))}
+      <div className="slider-dots">
+        <span className={activeIndex === 0 ? 'dot active' : 'dot'} onClick={() => handleDotClick(0)}></span>
+        <span className={activeIndex === 1 ? 'dot active' : 'dot'} onClick={() => handleDotClick(1)}></span>
+        <span className={activeIndex === 2 ? 'dot active' : 'dot'} onClick={() => handleDotClick(2)}></span>
       </div>
     </div>
   );
-}
+};
 
 
 function TextSection() {
@@ -206,61 +195,12 @@ function ProductSection() {
 }
 
 
-function GridComponent() {
-  return (
-    <div className="grid-container">
-      <div className="column">
-        <div className="item">
-          <div className="text-container">
-            <div>
-              <h2>Left Heading 1</h2>
-              <p>Left Text 1</p>
-            </div>
-            <FontAwesomeIcon icon={faCog} className="icon" />
-          </div>
-        </div>
-        <div className="item">
-          <div className="text-container">
-            <div>
-              <h3>Left Heading 2</h3>
-              <p>Left Text 2</p>
-            </div>
-            <FontAwesomeIcon icon={faCog} className="icon" />
-          </div>
-        </div>
-      </div>
-      <div className="column">
-        <div className="item">
-          <FontAwesomeIcon icon={faCog} className="icon" />
-          <div className="text-container">
-            <div>
-              <h2>Right Heading 1</h2>
-              <p>Right Text 1</p>
-            </div>
-            <FontAwesomeIcon icon={faCog} className="icon" />
-          </div>
-        </div>
-        <div className="item">
-          <FontAwesomeIcon icon={faCog} className="icon" />
-          <div className="text-container">
-            <div>
-              <h3>Right Heading 2</h3>
-              <p>Right Text 2</p>
-            </div>
-            <FontAwesomeIcon icon={faCog} className="icon" />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 function AdditionalService() {
   return (
     <div className="service-container">
-      <h1 style={{fontSize: "30px", fontWeight: "lighter"}}>Image Gallery</h1>
+      <h1 style={{fontSize: "30px", fontWeight: "lighter"}}>Additional Service</h1>
       <p style={{fontSize: "18px", color: "gray"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
+      <div className='service'>
       <div className="image-container">
         <img src={icon1} alt="Image 1" />
         <div className="name" style={{fontSize:"25px", fontWeight: "lighter"}}>John Doe</div>
@@ -277,6 +217,7 @@ function AdditionalService() {
         <img src={icon3} alt="Image 3" />
         <div className="name" style={{fontSize:"25px", fontWeight: "lighter"}}>Bob Johnson</div>
         <div className="description" style={{fontSize: "15px"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+      </div>
       </div>
     </div>
   );
@@ -308,29 +249,40 @@ function Portfolio() {
   );
 };
 
-const ImageBox = ({ src, alt, text }) => {
+const ProductCard = () => {
   return (
-    <div className="box">
-      <img src={src} alt={alt} className="image" />
-      <div className="text-box">
-        <p className="text">{text}</p>
-        <div className="icons">
-          <span className="icon"><i className="fas fa-search"></i></span>
-          <span className="icon"><i className="fas fa-external-link-alt"></i></span>
+    <div className="product-card">
+      <div className="product-image-container">
+        <img src={productrow2} alt="Product 1" className="product-image" />
+        <div className="product-info">
+          <h3 className="product-name">Product 1</h3>
+          <p className="product-description">Product Description 1</p>
+          <button className="product-button">Add to Cart</button>
         </div>
       </div>
-    </div>
-  );
-};
-
-const ItemsImages = () => {
-  return (
-    <div className="container-items">
-      <div className="image-container2">
-        <ImageBox src={productrow2} alt="Image 1" text="Image 1 Text" />
-        <ImageBox src={productrow21} alt="Image 2" text="Image 2 Text" />
-        <ImageBox src={productrow22} alt="Image 3" text="Image 3 Text" />
-        <ImageBox src={productrow23} alt="Image 4" text="Image 4 Text" />
+      <div className="product-image-container">
+        <img src={productrow21} alt="Product 2" className="product-image" />
+        <div className="product-info">
+          <h3 className="product-name">Product 2</h3>
+          <p className="product-description">Product Description 2</p>
+          <button className="product-button">Add to Cart</button>
+        </div>
+      </div>
+      <div className="product-image-container">
+        <img src={productrow22} alt="Product 3" className="product-image" />
+        <div className="product-info">
+          <h3 className="product-name">Product 3</h3>
+          <p className="product-description">Product Description 3</p>
+          <button className="product-button">Add to Cart</button>
+        </div>
+      </div>
+      <div className="product-image-container">
+        <img src={productrow23} alt="Product 4" className="product-image" />
+        <div className="product-info">
+          <h3 className="product-name">Product 4</h3>
+          <p className="product-description">Product Description 4</p>
+          <button className="product-button">Add to Cart</button>
+        </div>
       </div>
     </div>
   );
