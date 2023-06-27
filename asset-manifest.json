@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/fashion-ecommerce-website/static/css/main.5f8449f6.css",
+    "main.js": "/fashion-ecommerce-website/static/js/main.8e5d7283.js",
+    "static/js/787.71e672d5.chunk.js": "/fashion-ecommerce-website/static/js/787.71e672d5.chunk.js",
+    "static/media/homebg3.jpg": "/fashion-ecommerce-website/static/media/homebg3.ca60c46a90ac669851d0.jpg",
+    "static/media/homebg1.jpg": "/fashion-ecommerce-website/static/media/homebg1.ba07461ec6ce18ba7d63.jpg",
+    "static/media/homebg2.jpg": "/fashion-ecommerce-website/static/media/homebg2.dbdf64e2067b0ed4bbb1.jpg",
+    "static/media/productrow21.jpg": "/fashion-ecommerce-website/static/media/productrow21.b562d8808976220923bc.jpg",
+    "static/media/home2.jpg": "/fashion-ecommerce-website/static/media/home2.f3633912681f85daa9d9.jpg",
+    "static/media/productrow22.jpg": "/fashion-ecommerce-website/static/media/productrow22.ae54af95d64cd8aff631.jpg",
+    "static/media/percentage.jpg": "/fashion-ecommerce-website/static/media/percentage.556a18a8c3afc4d509fe.jpg",
+    "static/media/productrow23.jpg": "/fashion-ecommerce-website/static/media/productrow23.5caf6423259ac0a4139b.jpg",
+    "static/media/article3.jpg": "/fashion-ecommerce-website/static/media/article3.9a1436f5bab81b22a8e1.jpg",
+    "static/media/article2.jpg": "/fashion-ecommerce-website/static/media/article2.aaa63c73a8009ab2cf2f.jpg",
+    "static/media/productrow2.jpg": "/fashion-ecommerce-website/static/media/productrow2.51efa2ebffc82b1c4139.jpg",
+    "static/media/productrow15.jpg": "/fashion-ecommerce-website/static/media/productrow15.0421a9039ad915489f8d.jpg",
+    "static/media/article1.jpg": "/fashion-ecommerce-website/static/media/article1.73b651d72152bffb665c.jpg",
+    "static/media/productrow1.jpg": "/fashion-ecommerce-website/static/media/productrow1.e542bfb1b5e4dc15f3d7.jpg",
+    "static/media/leftimg1.jpg": "/fashion-ecommerce-website/static/media/leftimg1.a4542a830b2d23157d7a.jpg",
+    "static/media/productrow17.jpg": "/fashion-ecommerce-website/static/media/productrow17.cb313a7727b6047b6869.jpg",
+    "static/media/icon1.jpg": "/fashion-ecommerce-website/static/media/icon1.6d1a6b772b7e137f1147.jpg",
+    "static/media/productrow13.jpg": "/fashion-ecommerce-website/static/media/productrow13.dc755b2240fed76f167d.jpg",
+    "static/media/productrow14.jpg": "/fashion-ecommerce-website/static/media/productrow14.435e33bafd08cb402413.jpg",
+    "static/media/productrow16.jpg": "/fashion-ecommerce-website/static/media/productrow16.6ce81da3e4211ec01f96.jpg",
+    "static/media/icon3.jpg": "/fashion-ecommerce-website/static/media/icon3.6cfa3b3f17eff6da7edd.jpg",
+    "static/media/productrow12.jpg": "/fashion-ecommerce-website/static/media/productrow12.e087e427522467e3e246.jpg",
+    "static/media/productrow18.jpg": "/fashion-ecommerce-website/static/media/productrow18.e0a6442a7763d33a87c2.jpg",
+    "static/media/icon2.jpg": "/fashion-ecommerce-website/static/media/icon2.f01cff9faa1a08ec6920.jpg",
+    "index.html": "/fashion-ecommerce-website/index.html",
+    "main.5f8449f6.css.map": "/fashion-ecommerce-website/static/css/main.5f8449f6.css.map",
+    "main.8e5d7283.js.map": "/fashion-ecommerce-website/static/js/main.8e5d7283.js.map",
+    "787.71e672d5.chunk.js.map": "/fashion-ecommerce-website/static/js/787.71e672d5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5f8449f6.css",
+    "static/js/main.8e5d7283.js"
+  ]
+}
