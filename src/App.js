@@ -249,45 +249,214 @@ function Portfolio() {
   );
 };
 
+const product1 = {
+  id: 1,
+  name: 'Product 1',
+  description: 'Product Description 1',
+  image: {
+    src: 'productrow2', 
+    width: 200,
+    height: 150
+  },
+  price: 10.99
+};
+
+const product2 = {
+  id: 2,
+  name: 'Product 2',
+  description: 'Product Description 2',
+  image: {
+    src: productrow21,
+    width: 200, 
+    height: 150 
+  },
+  price: 15.99
+};
+
+const product3 = {
+  id: 3,
+  name: 'Product 3',
+  description: 'Product Description 3',
+  image: {
+    src: productrow22,
+    width: 200, 
+    height: 150 
+  },
+  price: 12.99
+};
+
+const product4 = {
+  id: 4,
+  name: 'Product 4',
+  description: 'Product Description 4',
+  image: {
+    src: productrow23,
+    width: 200, 
+    height: 150 
+  },
+  price: 9.99
+};
+
 const ProductCard = () => {
+  const [cartItems, setCartItems] = useState([]);
+  const [showCart, setShowCart] = useState(false);
+
+  const addToCart = (product) => {
+    const existingItemIndex = cartItems.findIndex(item => item.id === product.id);
+    if (existingItemIndex !== -1) {
+      alert('This product is already in the cart.');
+    } else {
+      // Add the product to the cart
+      setCartItems([...cartItems, product]);
+      alert('Product added to cart successfully.');
+    }
+  };
+
+  const toggleCart = () => {
+    setShowCart(!showCart);
+  };
+  
+  const removeItem = (productId) => {
+    const updatedCartItems = cartItems.filter(item => item.id !== productId);
+    setCartItems(updatedCartItems);
+  };
+
+  const ViewCart = () => {
+    return (
+      <div className="cart-container">
+        {cartItems.map((item) => (
+          <CartItem key={item.id} item={item} removeItem={removeItem} />
+        ))}
+        <div className="cart-total">
+          <p>Total Price: ${calculateTotalPrice()}</p>
+          <button className="purchase-button">Purchase</button>
+          <button className="clear-cart-button" onClick={clearCart}>
+            Clear Cart
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  const CartItem = ({ item, removeItem }) => {
+    const { id, name, description, quantity, price, image } = item;
+
+    const increaseQuantity = () => {
+      const updatedCartItems = cartItems.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      );
+      setCartItems(updatedCartItems);
+    };
+
+    const decreaseQuantity = () => {
+      if (quantity > 1) {
+        const updatedCartItems = cartItems.map((item) =>
+          item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+        );
+        setCartItems(updatedCartItems);
+      }
+    };
+
+    const handleRemoveItem = () => {
+      const updatedCartItems = cartItems.filter((item) => item.id !== id);
+      setCartItems(updatedCartItems);
+    };
+
+    return (
+      <div className="cart-item">
+        <img src={image} alt={name} className="cart-item-image" />
+        <div className="cart-item-info">
+          <h3 className="cart-item-name">{name}</h3>
+          <p className="cart-item-description">{description}</p>
+          <div className="cart-item-quantity">
+            <button onClick={decreaseQuantity}>-</button>
+            <p>{quantity}</p>
+            <button onClick={increaseQuantity}>+</button>
+          </div>
+          <p className="cart-item-price">${price}</p>
+          <button className="cart-item-delete" onClick={handleRemoveItem}>
+            Delete
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  const calculateTotalPrice = () => {
+    const totalPrice = cartItems.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+    return totalPrice.toFixed(2);
+  };
+
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
+  const isInCart = (productId) => {
+    return cartItems.some(item => item.id === productId);
+  };
+
   return (
-    <div className="product-card">
-      <div className="product-image-container">
-        <img src={productrow2} alt="Product 1" className="product-image" />
-        <div className="product-info">
-          <h3 className="product-name">Product 1</h3>
-          <p className="product-description">Product Description 1</p>
-          <button className="product-button">Add to Cart</button>
+    <div>
+      <div className="product-card">
+        <div className="product-image-container">
+          <img src={productrow2} alt="Product 1" className="product-image" />
+          <div className="product-info">
+            <h3 className="product-name">Product 1</h3>
+            <p className="product-description">Product Description 1</p>
+            {isInCart(product1.id) ? (
+              <button className="product-button added-button">Added</button>
+            ) : (
+              <button className="product-button" onClick={() => addToCart(product1)}>Add to Cart</button>
+            )}
+          </div>
+        </div>
+        <div className="product-image-container">
+          <img src={productrow21} alt="Product 2" className="product-image" />
+          <div className="product-info">
+            <h3 className="product-name">Product 2</h3>
+            <p className="product-description">Product Description 2</p>
+            {isInCart(product2.id) ? (
+              <button className="product-button added-button">Added</button>
+            ) : (
+              <button className="product-button" onClick={() => addToCart(product2)}>Add to Cart</button>
+            )}
+          </div>
+        </div>
+        <div className="product-image-container">
+          <img src={productrow22} alt="Product 3" className="product-image" />
+          <div className="product-info">
+            <h3 className="product-name">Product 3</h3>
+            <p className="product-description">Product Description 3</p>
+            {isInCart(product3.id) ? (
+              <button className="product-button added-button">Added</button>
+            ) : (
+              <button className="product-button" onClick={() => addToCart(product3)}>Add to Cart</button>
+            )}
+          </div>
+        </div>
+        <div className="product-image-container">
+          <img src={productrow23} alt="Product 4" className="product-image" />
+          <div className="product-info">
+            <h3 className="product-name">Product 4</h3>
+            <p className="product-description">Product Description 4</p>
+            {isInCart(product4.id) ? (
+              <button className="product-button added-button">Added</button>
+            ) : (
+              <button className="product-button" onClick={() => addToCart(product4)}>Add to Cart</button>
+            )}
+          </div>
         </div>
       </div>
-      <div className="product-image-container">
-        <img src={productrow21} alt="Product 2" className="product-image" />
-        <div className="product-info">
-          <h3 className="product-name">Product 2</h3>
-          <p className="product-description">Product Description 2</p>
-          <button className="product-button">Add to Cart</button>
-        </div>
-      </div>
-      <div className="product-image-container">
-        <img src={productrow22} alt="Product 3" className="product-image" />
-        <div className="product-info">
-          <h3 className="product-name">Product 3</h3>
-          <p className="product-description">Product Description 3</p>
-          <button className="product-button">Add to Cart</button>
-        </div>
-      </div>
-      <div className="product-image-container">
-        <img src={productrow23} alt="Product 4" className="product-image" />
-        <div className="product-info">
-          <h3 className="product-name">Product 4</h3>
-          <p className="product-description">Product Description 4</p>
-          <button className="product-button">Add to Cart</button>
-        </div>
-      </div>
+      <button className="show-cart-button" onClick={toggleCart}>
+        {showCart ? 'Hide Cart' : 'Show Cart'}
+      </button>
+      {showCart && <ViewCart />}
     </div>
   );
 };
-
 
 const Card = () => {
   return (
